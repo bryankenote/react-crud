@@ -13,7 +13,7 @@ class Ingredients extends Component {
     let className = this.props.expand ? ' expand' : '';
     let ingredients = this.state.ingredients.map( (ingredient, index) => {
       return <li key={index} className="ingredient">{ingredient}</li>
-    })
+    });
     return (
       <div className={"collapsable" + className}>
         <div className="Ingredients round-bottom">

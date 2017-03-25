@@ -26,7 +26,7 @@ class RecipeBook extends Component {
   render() {
     let recipes = this.state.recipes.map((recipe, index) => {
       return <Recipe key={index} name={recipe.name} ingredients={recipe.ingredients} />
-    })
+    });
     return (
       <div className="RecipeBook container">
         {recipes}
