@@ -1,12 +1,112 @@
 $bg-color: #FFF;
+$primary-color-light: #D7EDCE;
+$primary-color-dark: #1B4D28;
+$container-color: #EEE;
+$border-color: #D0D0D0;
 
 .App-header {
   background-color: #222;
-  height: 75px;
-  padding: 20px;
+  border-bottom: 1px solid $border-color;
+  box-shadow: 0 1px 2px $border-color;
   color: white;
+  height: 90px;
+  margin-bottom: 15px;
+  padding: 20px;
+}
+
+.RecipeBook {
+  background-color: $container-color;
+  border: 1px solid $border-color;
+  border-radius: 5px;
+  padding: 15px;
 }
 
 .Recipe {
+  & > .recipe-name {
+    background-color: $primary-color-light;
+    border: 1px solid $border-color;
+    color: $primary-color-dark;
+    padding: 5px;
+ 
+    & > button {
+      background-color: transparent;
+      border: none;
+      &:focus {
+        outline: none;
+      }
+      &:hover {
+        color: #000;
+      }
+    }
+  }
+}
+
+.collapsable {
+	/* Initially we don't want any height, and we want the contents to be hidden */
+	max-height: 0;
+	overflow: hidden;
+  position: relative;
+  top: -10px;
+
+	/* Set our transitions up. */
+	-webkit-transition: max-height 0.8s;
+	-moz-transition: max-height 0.8s;
+	transition: max-height 0.8s;
+}
+.expand {
+	/* On hover, set the max-height to something large. In this case there's an obvious limit. */
+	//max-height: 260px;
+  height: auto;
+	max-height: 260px;
+}
+
+.Ingredients {
   background-color: $bg-color;
+  border-color: $border-color;
+  border-style: solid;
+  border-width: 0 1px 1px 1px;
+  box-shadow: 0 1px 2px $border-color;
+  padding: 25px;
+
+  & > .ingredients-title {
+    text-align: center;
+  }
+
+  & > .ingredient-list {
+    list-style: none;
+    padding: 0;
+    & > .ingredient {
+      &:first-child {
+        border-radius: 3px 3px 0 0;
+      }
+      border-color: $border-color;
+      border-style: solid;
+      border-width: 1px 1px 0 1px;
+      padding: 5px;
+
+      &:last-child {
+        border-radius: 0 0 3px 3px;
+        border-width: 1px;
+      }
+    }
+  }
+}
+
+.round-top {
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+}
+
+
+.round-bottom {
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+}
+
+.del-btn, .edit-btn {
+  margin-right: 5px;
+}
+
+.add-btn {
+  margin-top: 10px;
 }
