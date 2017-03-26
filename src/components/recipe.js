@@ -23,7 +23,7 @@ class Recipe extends Component {
         <h4 className={"recipe-name round-top" + className}>
           <button onClick={this.expand.bind(this)}>{this.state.name}</button>
         </h4>
-        <Ingredients ingredients={this.state.ingredients} expand={this.state.expand} />
+        <Ingredients name={this.state.name} ingredients={this.state.ingredients} expand={this.state.expand} />
       </div>
     );
   }

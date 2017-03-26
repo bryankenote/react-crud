@@ -7,7 +7,7 @@
   margin-bottom: 15px;
   padding: 20px; }
 
-.RecipeBook {
+.container {
   background-color: #EEE;
   border: 1px solid #D0D0D0;
   border-radius: 5px;
@@ -25,22 +25,6 @@
       outline: none; }
     .Recipe > .recipe-name > button:hover {
       color: #000; }
-
-.collapsable {
-  /* Initially we don't want any height, and we want the contents to be hidden */
-  max-height: 0;
-  overflow: hidden;
-  position: relative;
-  top: -10px;
-  /* Set our transitions up. */
-  -webkit-transition: max-height 0.8s;
-  -moz-transition: max-height 0.8s;
-  transition: max-height 0.8s; }
-
-.expand {
-  /* On hover, set the max-height to something large. In this case there's an obvious limit. */
-  height: auto;
-  max-height: 260px; }
 
 .Ingredients {
   background-color: #FFF;
@@ -64,6 +48,65 @@
       .Ingredients > .ingredient-list > .ingredient:last-child {
         border-radius: 0 0 3px 3px;
         border-width: 1px; }
+
+.CreateEditRecipe > .x-btn {
+  background-color: transparent;
+  float: right; }
+  .CreateEditRecipe > .x-btn:focus {
+    outline: none; }
+
+.CreateEditRecipe > .operation, .CreateEditRecipe > .x-btn {
+  display: inline-block; }
+
+.CreateEditRecipe > textarea {
+  resize: vertical;
+  width: 100%; }
+
+.CreateEditRecipe > label, .CreateEditRecipe > button, .CreateEditRecipe > textarea {
+  display: block; }
+
+.CreateEditRecipe > .update-btn, .CreateEditRecipe > .close-btn {
+  display: inline-block; }
+
+.collapsable {
+  max-height: 0;
+  overflow: hidden;
+  position: relative;
+  top: -10px;
+  -webkit-transition: max-height 0.8s;
+  -moz-transition: max-height 0.8s;
+  transition: max-height 0.8s ease-in-out; }
+
+.expand {
+  display: block;
+  max-height: 340px; }
+
+.background-shadow {
+  background-color: #000;
+  display: block;
+  height: 0;
+  left: 0;
+  opacity: 0;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  -moz-transition: opacity .8s ease-in-out;
+  -webkit-transition: opacity .8s ease-in-out;
+  transition: opacity .8s ease-in-out; }
+
+.fade-in {
+  display: block;
+  opacity: 0.6;
+  min-height: 100%; }
+
+.fixed-menu {
+  background-color: #FFF;
+  border: 1px solid #D0D0D0;
+  box-shadow: 1px 1px 4px #000;
+  left: 25%;
+  padding: 25px;
+  position: relative;
+  width: 50%; }
 
 .round-top {
   border-top-left-radius: 5px;
