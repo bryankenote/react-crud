@@ -86,15 +86,17 @@ $header-height: 90px;
   & > .operation, & > .x-btn {
     display: inline-block;
   }
-  & > textarea {
-    resize: vertical;
-    width: 100%;
-  }
-  & > label, & > button, & > textarea {
-    display: block;
-  }
-  & > .update-btn, & > .close-btn {
-    display: inline-block;
+  & > form {
+    & > textarea {
+      resize: vertical;
+      width: 100%;
+    }
+    & > label, & > button, & > textarea {
+      display: block;
+    }
+    & > .update-btn, & > .close-btn {
+      display: inline-block;
+    }
   }
 }
 
