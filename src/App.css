@@ -58,14 +58,14 @@
 .CreateEditRecipe > .operation, .CreateEditRecipe > .x-btn {
   display: inline-block; }
 
-.CreateEditRecipe > textarea {
+.CreateEditRecipe > form > textarea {
   resize: vertical;
   width: 100%; }
 
-.CreateEditRecipe > label, .CreateEditRecipe > button, .CreateEditRecipe > textarea {
+.CreateEditRecipe > form > label, .CreateEditRecipe > form > button, .CreateEditRecipe > form > textarea {
   display: block; }
 
-.CreateEditRecipe > .update-btn, .CreateEditRecipe > .close-btn {
+.CreateEditRecipe > form > .update-btn, .CreateEditRecipe > form > .close-btn {
   display: inline-block; }
 
 .collapsable {

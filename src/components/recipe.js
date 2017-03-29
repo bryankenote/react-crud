@@ -5,6 +5,7 @@ class Recipe extends Component {
   constructor(props, context) {
     super(props, context);
     this.state = {
+      key: props.key,
       name: props.name,
       ingredients: props.ingredients,
       expand: false
@@ -23,7 +24,7 @@ class Recipe extends Component {
         <h4 className={"recipe-name round-top" + className}>
           <button onClick={this.expand.bind(this)}>{this.state.name}</button>
         </h4>
-        <Ingredients name={this.state.name} ingredients={this.state.ingredients} expand={this.state.expand} />
+        <Ingredients recipeKey={this.state.key} name={this.state.name} ingredients={this.state.ingredients} expand={this.state.expand} />
       </div>
     );
   }

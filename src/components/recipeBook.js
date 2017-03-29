@@ -5,16 +5,26 @@ import CreateEditRecipe from './createEditRecipe';
 class RecipeBook extends Component {
   constructor(props, context) {
     super(props, context);
-    this.state = {
-      add: false,
-      recipes: [{
-        name: 'Grilled Cheese',
-        ingredients: ['bread', 'cheese', 'butter']
-      }, {
-        name: 'PB & J',
-        ingredients: ['bread', 'peanutbutter', 'jelly']
-      }]
-    };
+    let test = JSON.parse(localStorage.getItem('RecipeBook'));
+    if (test !== null) {
+      this.state = test;
+    } else {
+      this.state = {
+        add: false,
+        recipes: [{
+          name: 'Grilled Cheese',
+          ingredients: ['bread', 'cheese', 'butter']
+        }, {
+          name: 'PB & J',
+          ingredients: ['bread', 'peanutbutter', 'jelly']
+        }]
+      };
+    }
+    this.state.add = false;
+  }
+
+  componentDidMount() {
+    localStorage.setItem('RecipeBook', JSON.stringify(this.state));
   }
 
   addRecipe(e) {
@@ -27,6 +37,7 @@ class RecipeBook extends Component {
       ingredients: ingredients
     });
     this.setState({add: false});
+    localStorage.setItem('RecipeBook', JSON.stringify(this.state));
   }
 
   updateRecipe(name, ingredients) {
@@ -38,10 +49,11 @@ class RecipeBook extends Component {
       })
     });
     this.setState({add: false});
+    localStorage.setItem('RecipeBook', JSON.stringify(this.state));
   }
 
   deleteRecipe(e) {
-    return 0;
+    localStorage.setItem('RecipeBook', JSON.stringify(this.state));
   }
 
   closeCreateEditMenu(e) {
@@ -58,7 +70,7 @@ class RecipeBook extends Component {
           {recipes}
           <button className="add-btn btn btn-primary" onClick={this.addRecipe.bind(this)}>Add Recipe</button>
         </div>
-        <CreateEditRecipe expand={this.state.add} name={recipes[0].name} operation="add" ingredients={recipes[0].ingredients} handleClose={this.closeCreateEditMenu.bind(this)} handleCreate={this.createRecipe.bind(this)} handleEdit={this.updateRecipe.bind(this)} />
+        <CreateEditRecipe expand={this.state.add} name={recipes[0].name} operation="add" ingredients={recipes[0].ingredients} handleClose={this.closeCreateEditMenu.bind(this)} handleCreate={this.createRecipe.bind(this)} handleEdit={this.updateRecipe.bind(this)} handleDelete={this.deleteRecipe.bind(this)} />
       </div>
     );
   }

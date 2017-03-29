@@ -5,6 +5,7 @@ class Ingredients extends Component {
   constructor(props, context) {
     super(props, context);
     this.state = {
+      recipeKey: props.recipeKey,
       name: props.name,
       ingredients: props.ingredients,
       expand: false,
@@ -14,6 +15,10 @@ class Ingredients extends Component {
 
   editRecipe(e) {
     this.setState({edit: true});
+  }
+
+  deleteRecipe(e) {
+    //
   }
 
   closeCreateEditMenu(e) {
@@ -34,11 +39,11 @@ class Ingredients extends Component {
             <ul className="ingredient-list">
               {ingredients}
             </ul>
-            <button className="del-btn btn btn-danger"><i className="fa fa-trash" aria-hidden="true"></i></button>
+            <button className="del-btn btn btn-danger" onClick={this.deleteRecipe.bind(this)}><i className="fa fa-trash" aria-hidden="true"></i></button>
             <button className="edit-btn btn btn-info" onClick={this.editRecipe.bind(this)}><i className="fa fa-pencil" aria-hidden="true"></i></button>
           </div>
         </div>
-        <CreateEditRecipe expand={this.state.edit} name={this.state.name} operation="edit" ingredients={this.state.ingredients} handleClose={this.closeCreateEditMenu.bind(this)} />
+        <CreateEditRecipe recipeKey={this.state.recipeKey} expand={this.state.edit} name={this.state.name} operation="edit" ingredients={this.state.ingredients} handleClose={this.closeCreateEditMenu.bind(this)} />
       </div>
     );
   }
