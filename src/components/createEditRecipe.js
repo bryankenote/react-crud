@@ -5,9 +5,6 @@ class CreateEditRecipe extends Component {
     super(props, context);
     this.state = {
       operation: props.operation,
-      id: props.id,
-      name: props.name,
-      ingredients: props.ingredients
     };
   }
 
@@ -19,7 +16,7 @@ class CreateEditRecipe extends Component {
   handleEdit(e) {
     e.preventDefault();
     const recipe = {
-      id: this.state.id,
+      id: this.props.id,
       name: e.target.name.value,
       ingredients: e.target.ingredients.value.split(',')
     };
@@ -30,7 +27,7 @@ class CreateEditRecipe extends Component {
   render() {
     const expand = this.props.expand ? ' expand' : '';
     const fadeIn = this.props.expand ? ' fade-in' : '';
-    const ingredients = this.state.ingredients !== undefined ? this.state.ingredients : [];
+    const ingredients = this.props.ingredients !== undefined ? this.props.ingredients : [];
     const handleSubmit = this.state.operation === 'add' ? this.handleCreate.bind(this) : this.handleEdit.bind(this);
     return (
       <div>
@@ -44,7 +41,7 @@ class CreateEditRecipe extends Component {
             <hr />
             <form onSubmit={handleSubmit}>
               <label>Recipe</label>
-              <input type="text" placeholder="Recipe Name" defaultValue={this.state.name} name="name"></input>
+              <input type="text" placeholder="Recipe Name" defaultValue={this.props.name} name="name"></input>
               <label>Ingredients</label>
               <textarea placeholder="Enter ingredients separated by commas" defaultValue={ingredients.join(',')} name="ingredients"></textarea>
               <hr />

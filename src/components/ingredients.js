@@ -5,11 +5,8 @@ class Ingredients extends Component {
   constructor(props, context) {
     super(props, context);
     this.state = {
-      id: this.props.id,
-      name: props.name,
-      ingredients: props.ingredients,
       expand: false,
-      edit: false
+      edit: false,
     };
   }
 
@@ -17,8 +14,14 @@ class Ingredients extends Component {
     this.setState({edit: true});
   }
 
+  submitEditRecipe(recipe) {
+    this.props.handleEdit(recipe);
+    this.setState({edit: false});
+  }
+
   deleteRecipe() {
-    this.props.handleDelete(this.state.id);
+    this.props.handleDelete(this.props.id)
+    this.setState({edit: false, expand: false});
   }
 
   closeCreateEditMenu() {
@@ -26,9 +29,9 @@ class Ingredients extends Component {
   }
 
   render() {
-    const recipe = { id: this.state.id, name: this.state.name, ingredients: this.state.ingredients };
+    const recipe = { id: this.props.id, name: this.props.name, ingredients: this.props.ingredients };
     const className = this.props.expand ? ' expand' : '';
-    const ingredients = this.state.ingredients.map( (ingredient, index) => {
+    const ingredients = this.props.ingredients.map( (ingredient, index) => {
       return <li key={index} className="ingredient">{ingredient}</li>
     });
     return (
@@ -44,7 +47,7 @@ class Ingredients extends Component {
             <button className="edit-btn btn btn-info" onClick={this.editRecipe.bind(this)}><i className="fa fa-pencil" aria-hidden="true"></i></button>
           </div>
         </div>
-        <CreateEditRecipe {...recipe} expand={this.state.edit} operation="edit" handleEdit={this.props.handleEdit} handleClose={this.closeCreateEditMenu.bind(this)} />
+        <CreateEditRecipe {...recipe} expand={this.state.edit} operation="edit" handleEdit={this.submitEditRecipe.bind(this)} handleClose={this.closeCreateEditMenu.bind(this)} />
       </div>
     );
   }

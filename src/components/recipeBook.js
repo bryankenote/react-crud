@@ -9,11 +9,14 @@ class RecipeBook extends Component {
     super(props, context);
     this.state = {
       recipes: RecipeStore.getAll(),
-      add: false
+      add: false,
     };
   }
 
   componentDidMount() {
+    RecipeStore.on('change', () => {
+      this.setState({add: false});
+    })
   }
 
   addRecipe() {
@@ -22,15 +25,17 @@ class RecipeBook extends Component {
 
   createRecipe(name, ingredients) {
     RecipeActions.createRecipe(name, ingredients);
-    this.setState({add: false});
+    this.setState({add: false, recipes: RecipeStore.getAll()});
   }
 
   updateRecipe(recipe) {
     RecipeActions.updateRecipe(recipe);
+    this.setState({add: false, recipes: RecipeStore.getAll()});
   }
 
   deleteRecipe(id) {
     RecipeActions.deleteRecipe(id);
+    this.setState({add: false, recipes: RecipeStore.getAll()});
   }
 
   closeCreateEditMenu() {

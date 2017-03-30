@@ -5,9 +5,6 @@ class Recipe extends Component {
   constructor(props, context) {
     super(props, context);
     this.state = {
-      id: this.props.id,
-      name: props.name,
-      ingredients: props.ingredients,
       expand: false
     };
   }
@@ -19,11 +16,11 @@ class Recipe extends Component {
 
   render() {
     const className = this.state.expand ? '' : ' round-bottom';
-    const recipe = { id: this.state.id, name: this.state.name, ingredients: this.state.ingredients };
+    const recipe = { id: this.props.id, name: this.props.name, ingredients: this.props.ingredients };
     return (
       <div className="Recipe">
         <h4 className={"recipe-name round-top" + className}>
-          <button onClick={this.expand.bind(this)}>{this.state.name}</button>
+          <button onClick={this.expand.bind(this)}>{this.props.name}</button>
         </h4>
         <Ingredients {...recipe} expand={this.state.expand} handleEdit={this.props.handleEdit} handleDelete={this.props.handleDelete} />
       </div>
