@@ -18,13 +18,16 @@
   border: 1px solid #D0D0D0;
   color: #1B4D28;
   padding: 5px; }
-  .Recipe > .recipe-name > button {
-    background-color: transparent;
-    border: none; }
-    .Recipe > .recipe-name > button:focus {
-      outline: none; }
-    .Recipe > .recipe-name > button:hover {
-      color: #000; }
+
+.Recipe > .recipe-name > button {
+  background-color: transparent;
+  border: none; }
+
+.Recipe > .recipe-name > button:focus {
+  outline: none; }
+
+.Recipe > .recipe-name > button:hover {
+  color: #000; }
 
 .Ingredients {
   background-color: #FFF;
@@ -33,27 +36,33 @@
   border-width: 0 1px 1px 1px;
   box-shadow: 0 1px 2px #D0D0D0;
   padding: 25px; }
-  .Ingredients > .ingredients-title {
-    text-align: center; }
-  .Ingredients > .ingredient-list {
-    list-style: none;
-    padding: 0; }
-    .Ingredients > .ingredient-list > .ingredient {
-      border-color: #D0D0D0;
-      border-style: solid;
-      border-width: 1px 1px 0 1px;
-      padding: 5px; }
-      .Ingredients > .ingredient-list > .ingredient:first-child {
-        border-radius: 3px 3px 0 0; }
-      .Ingredients > .ingredient-list > .ingredient:last-child {
-        border-radius: 0 0 3px 3px;
-        border-width: 1px; }
+
+.Ingredients > .ingredients-title {
+  text-align: center; }
+
+.Ingredients > .ingredient-list {
+  list-style: none;
+  padding: 0; }
+
+.Ingredients > .ingredient-list > .ingredient {
+  border-color: #D0D0D0;
+  border-style: solid;
+  border-width: 1px 1px 0 1px;
+  padding: 5px; }
+
+.Ingredients > .ingredient-list > .ingredient:first-child {
+  border-radius: 3px 3px 0 0; }
+
+.Ingredients > .ingredient-list > .ingredient:last-child {
+  border-radius: 0 0 3px 3px;
+  border-width: 1px; }
 
 .CreateEditRecipe > .x-btn {
   background-color: transparent;
   float: right; }
-  .CreateEditRecipe > .x-btn:focus {
-    outline: none; }
+
+.CreateEditRecipe > .x-btn:focus {
+  outline: none; }
 
 .CreateEditRecipe > .operation, .CreateEditRecipe > .x-btn {
   display: inline-block; }
@@ -81,6 +90,9 @@
   display: block;
   max-height: 340px; }
 
+.hidden {
+  display: none; }
+
 .background-shadow {
   background-color: #000;
   display: block;
@@ -103,9 +115,10 @@
   background-color: #FFF;
   border: 1px solid #D0D0D0;
   box-shadow: 1px 1px 4px #000;
+  top: 15%;
   left: 25%;
   padding: 25px;
-  position: relative;
+  position: absolute;
   width: 50%; }
 
 .round-top {

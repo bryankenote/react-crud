@@ -26,6 +26,7 @@ class CreateEditRecipe extends Component {
 
   render() {
     const expand = this.props.expand ? ' expand' : '';
+    const hidden = this.props.expand ? '' : ' hidden';
     const fadeIn = this.props.expand ? ' fade-in' : '';
     const ingredients = this.props.ingredients !== undefined ? this.props.ingredients : [];
     const handleSubmit = this.state.operation === 'add' ? this.handleCreate.bind(this) : this.handleEdit.bind(this);
@@ -33,7 +34,8 @@ class CreateEditRecipe extends Component {
       <div>
         <div className={"background-shadow" + fadeIn}>
         </div>
-        <div className={"collapsable" + expand}>
+        {/*<div className={"collapsable" + expand}>*/}
+        <div className={hidden}>
           {/*<div className={"CreateEditRecipe fixed-menu" + fadeIn}>*/}
           <div className="CreateEditRecipe fixed-menu">
             <h3 className="operation">{this.state.operation}</h3>
