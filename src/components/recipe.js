@@ -5,7 +5,7 @@ class Recipe extends Component {
   constructor(props, context) {
     super(props, context);
     this.state = {
-      key: props.key,
+      id: this.props.id,
       name: props.name,
       ingredients: props.ingredients,
       expand: false
@@ -13,18 +13,19 @@ class Recipe extends Component {
   }
 
   expand(e) {
-    let val = this.state.expand ? false : true;
+    const val = this.state.expand ? false : true;
     this.setState({expand: val});
   }
 
   render() {
-    let className = this.state.expand ? '' : ' round-bottom';
+    const className = this.state.expand ? '' : ' round-bottom';
+    const recipe = { id: this.state.id, name: this.state.name, ingredients: this.state.ingredients };
     return (
       <div className="Recipe">
         <h4 className={"recipe-name round-top" + className}>
           <button onClick={this.expand.bind(this)}>{this.state.name}</button>
         </h4>
-        <Ingredients recipeKey={this.state.key} name={this.state.name} ingredients={this.state.ingredients} expand={this.state.expand} />
+        <Ingredients {...recipe} expand={this.state.expand} handleEdit={this.props.handleEdit} handleDelete={this.props.handleDelete} />
       </div>
     );
   }

@@ -5,6 +5,7 @@ class CreateEditRecipe extends Component {
     super(props, context);
     this.state = {
       operation: props.operation,
+      id: props.id,
       name: props.name,
       ingredients: props.ingredients
     };
@@ -17,14 +18,20 @@ class CreateEditRecipe extends Component {
 
   handleEdit(e) {
     e.preventDefault();
-    this.props.handleEdit(e.target.name.value, e.target.ingredients.value.split(','));
+    const recipe = {
+      id: this.state.id,
+      name: e.target.name.value,
+      ingredients: e.target.ingredients.value.split(',')
+    };
+    this.props.handleEdit(recipe);
+    this.setState({ edit: true });
   }
 
   render() {
-    let expand = this.props.expand ? ' expand' : '';
-    let fadeIn = this.props.expand ? ' fade-in' : '';
-    let ingredients = this.state.ingredients !== undefined ? this.state.ingredients : [];
-    let handleSubmit = this.state.operation === 'add' ? this.handleCreate.bind(this) : this.handleEdit.bind(this);
+    const expand = this.props.expand ? ' expand' : '';
+    const fadeIn = this.props.expand ? ' fade-in' : '';
+    const ingredients = this.state.ingredients !== undefined ? this.state.ingredients : [];
+    const handleSubmit = this.state.operation === 'add' ? this.handleCreate.bind(this) : this.handleEdit.bind(this);
     return (
       <div>
         <div className={"background-shadow" + fadeIn}>
